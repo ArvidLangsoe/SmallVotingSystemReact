@@ -12,12 +12,11 @@ namespace VotingSystem.Controllers
     public class VoteController : Controller
     {
         [HttpPost("{pollId}")]
-        public  IActionResult GetPoll([FromServices] PollService pollService, [FromRoute] int pollId, [FromBody] VoteModel vote) {
+        public  IActionResult Vote([FromServices] PollService pollService, [FromRoute] int pollId, [FromBody] VoteModel vote) {
             if (!ModelState.IsValid) {
                 throw new Exception("Errrrrroooooorrrr");
             }
-            pollService.AddVote(vote);
-            return Ok("Vote added.");
+            return Ok(pollService.AddVote(vote));
 
         }
     }

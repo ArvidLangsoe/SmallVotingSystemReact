@@ -57,7 +57,7 @@ namespace VotingSystem.Services
             _polls[newPoll.Id] = newPoll;
         }
 
-        public void AddVote(VoteModel voteModel)
+        public PollViewModel AddVote(VoteModel voteModel)
         {
             Vote newVote = new Vote()
             {
@@ -79,6 +79,7 @@ namespace VotingSystem.Services
             }
 
             poll.Votes.Add(newVote);
+            return GetPoll(voteModel.PollId);
         }
 
         public List<PollListModel> GetPolls()
